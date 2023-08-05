@@ -23,5 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('add-food/', add_food_product, name='add_food_product'),
     path('update-food/<name>', update_product, name='update_product'),
+    path('order-food/', food_display, name='update_product'),
+
 
 ]

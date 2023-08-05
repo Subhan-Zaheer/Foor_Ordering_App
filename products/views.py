@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 
 
@@ -41,13 +41,17 @@ def update_product(request, name):
         
         product_images = request.FILES.getlist('product_image') or images
 
-        
+        images.delete()
         for image in product_images:
-            images.product_image = image
+            Product_Image.objects.create(product=product, product_image=image)
 
         product.save()
-        images.save()
-        
+        return redirect('/order-food')
+
 
 
     return render(request, 'update_product.html', data)
+
+def food_display(request):
+    
+    return render(request,'food_display.html')
