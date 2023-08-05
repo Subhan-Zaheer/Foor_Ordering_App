@@ -33,28 +33,33 @@ class Product(BaseClass):
     def __str__(self) -> str:
         return f"{self.product_name}"
     
+
+def product_image_upload_path(instance, filename):
+    # Construct the upload path with the product name and current timestamp
+    return f'product/{instance.product.product_name}/{filename}'
+
 class Product_Image(BaseClass):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
-    product_image = models.ImageField(upload_to=f'product\\{product}', default=None, null=True)
+    product_image = models.ImageField(upload_to=product_image_upload_path, default=None, null=True)
     
     def __str__(self) -> str:
         return f"Image of {self.product.product_name}"
     
 
-# @receiver(pre_save, sender=Product)
-# def set_updated_at(sender, instance, update_fields, **kwargs):
-#     # Check if the 'updated_at' field is in the 'update_fields' list
-#     instance.updated_at = timezone.now() if 'updated_at' in update_fields or update_fields is None else None
+@receiver(pre_save, sender=Product)
+def set_updated_at(sender, instance, update_fields, **kwargs):
+    # Check if the 'updated_at' field is in the 'update_fields' list
+    instance.updated_at = timezone.now() 
 
-# @receiver(pre_save, sender=Product_Image)
-# def set_updated_at(sender, instance, update_fields, **kwargs):
-#     # Check if the 'updated_at' field is in the 'update_fields' list
-#     instance.updated_at = timezone.now() if 'updated_at' in update_fields else None
+@receiver(pre_save, sender=Product_Image)
+def set_updated_at(sender, instance, update_fields, **kwargs):
+    # Check if the 'updated_at' field is in the 'update_fields' list
+    instance.updated_at = timezone.now() 
 
-# @receiver(post_save, sender=Product)
-# def set_created_at(sender, instance, created, **kwargs):
-#     instance.created_at = timezone.now() if created and not instance.created_at else None
+@receiver(post_save, sender=Product)
+def set_created_at(sender, instance, created, **kwargs):
+    instance.created_at = timezone.now() if created and not instance.created_at else None
 
-# @receiver(post_save, sender=Product_Image)
-# def set_created_at(sender, instance, created, **kwargs):
-#     instance.created_at = timezone.now() if created and not instance.created_at else None
+@receiver(post_save, sender=Product_Image)
+def set_created_at(sender, instance, created, **kwargs):
+    instance.created_at = timezone.now() if created and not instance.created_at else None
