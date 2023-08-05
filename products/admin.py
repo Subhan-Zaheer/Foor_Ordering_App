@@ -9,6 +9,6 @@ class adminProduct(admin.ModelAdmin):
 admin.site.register(Product, adminProduct)
 
 class adminProduct_Image(admin.ModelAdmin):
-    list_display = ('product_image', 'product')
+    list_display = ('product_image', 'product', 'created_at', 'updated_at',)
 
 admin.site.register(Product_Image, adminProduct_Image)
