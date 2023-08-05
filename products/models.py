@@ -30,8 +30,8 @@ class Product(BaseClass):
             self.product_slug = slugify(self.product_name)
         super().save(*args, **kwargs)
     
-    # def __str__(self) -> str:
-    #     return f"{self.product_name}"
+    def __str__(self) -> str:
+        return f"{self.product_name}"
     
 class Product_Image(BaseClass):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')

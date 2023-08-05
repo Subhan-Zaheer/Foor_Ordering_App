@@ -22,4 +22,6 @@ from products.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('add-food/', add_food_product, name='add_food_product'),
+    path('update-food/<name>', update_product, name='update_product'),
+
 ]
