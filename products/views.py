@@ -54,4 +54,10 @@ def update_product(request, name):
 
 def food_display(request):
     
-    return render(request,'food_display.html')
+    products = Product.objects.all()
+
+    data = {
+        'products' : products,
+    }
+
+    return render(request,'food_display.html', data)

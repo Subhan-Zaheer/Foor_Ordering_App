@@ -13,46 +13,21 @@
   <div class="container mt-5">
     <h1 class="mb-4">Food Menu</h1>
     <div class="row">
-      <!-- Food Item 1 -->
+
+      {% for p in products %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
           <img src="food_item_1.jpg" class="card-img-top" alt="Food Item 1">
           <div class="card-body">
-            <h5 class="card-title">Food Item 1</h5>
-            <p class="card-text">Description of Food Item 1</p>
-            <p class="card-text">Price: $10</p>
-            <a href="#" class="btn btn-primary">Order Now</a>
+            <h5 class="card-title">{{p.product_name}}</h5>
+            <p class="card-text">{{p.product_description}}</p>
+            <p class="card-text">Price: Pkr{{p.product_price}}</p>
+            <p class="card-text">Quantity: {{p.product_quantity}}</p>
+            <a href="#" class="btn btn-outline-primary">Order Now</a>
           </div>
         </div>
       </div>
-
-      <!-- Food Item 2 -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
-          <img src="food_item_2.jpg" class="card-img-top" alt="Food Item 2">
-          <div class="card-body">
-            <h5 class="card-title">Food Item 2</h5>
-            <p class="card-text">Description of Food Item 2</p>
-            <p class="card-text">Price: $12</p>
-            <a href="#" class="btn btn-primary">Order Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Food Item 3 -->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card">
-          <img src="food_item_3.jpg" class="card-img-top" alt="Food Item 3">
-          <div class="card-body">
-            <h5 class="card-title">Food Item 3</h5>
-            <p class="card-text">Description of Food Item 3</p>
-            <p class="card-text">Price: $8</p>
-            <a href="#" class="btn btn-primary">Order Now</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add more food items as needed -->
+      {% endfor %}
 
     </div>
   </div>
