@@ -54,7 +54,7 @@ def update_product(request, name):
 
 def food_display(request):
     
-    products = Product.objects.all()
+    products = Product_Image.objects.all()
 
     data = {
         'products' : products,

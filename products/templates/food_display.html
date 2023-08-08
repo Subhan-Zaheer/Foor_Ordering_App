@@ -17,12 +17,12 @@
       {% for p in products %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
-          <img src="food_item_1.jpg" class="card-img-top" alt="Food Item 1">
+          <img src="/media/product/{{p.product.product_name}}/46.jpg" class="card-img-top" alt="Food Item 1">
           <div class="card-body">
-            <h5 class="card-title">{{p.product_name}}</h5>
-            <p class="card-text">{{p.product_description}}</p>
-            <p class="card-text">Price: Pkr{{p.product_price}}</p>
-            <p class="card-text">Quantity: {{p.product_quantity}}</p>
+            <h5 class="card-title">{{p.product.product_name}}</h5>
+            <p class="card-text">{{p.product.product_description}}</p>
+            <p class="card-text">Price: Pkr{{p.product.product_price}}</p>
+            <p class="card-text">Quantity: {{p.product.product_quantity}}</p>
             <a href="#" class="btn btn-outline-primary">Order Now</a>
           </div>
         </div>
