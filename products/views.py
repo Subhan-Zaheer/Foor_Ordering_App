@@ -61,3 +61,15 @@ def food_display(request):
     }
 
     return render(request,'food_display.html', data)
+
+def product_details(request, slug):
+    product = Product.objects.get(product_slug = slug)
+    images = product.product_images.all()
+    for _ in images:
+        print(f"Images of product are : {_}")
+
+    data = {
+        'product' : product, 
+        'images' : images,
+    }
+    return render(request, 'product_details.html', data)

@@ -42,8 +42,8 @@ class Product_Image(BaseClass):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_images')
     product_image = models.ImageField(upload_to=product_image_upload_path, default=None, null=True)
     
-    def __str__(self) -> str:
-        return f"Image of {self.product.product_name}"
+    # def __str__(self) -> str:
+    #     return f"Image of {self.product.product_name}"
     
 
 @receiver(pre_save, sender=Product)

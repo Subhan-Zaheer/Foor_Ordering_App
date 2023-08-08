@@ -17,13 +17,22 @@
       {% for p in products %}
       <div class="col-lg-4 col-md-6 mb-4">
         <div class="card">
-          <img src="/media/product/{{p.product.product_name}}/46.jpg" class="card-img-top" alt="Food Item 1">
+            <!-- {% if p.product_image %}
+          <img src="{{p.product_image.url}}" class="card-img-top" alt="{{p.product.product_name}}">
+          {% endif %} -->
           <div class="card-body">
             <h5 class="card-title">{{p.product.product_name}}</h5>
             <p class="card-text">{{p.product.product_description}}</p>
             <p class="card-text">Price: Pkr{{p.product.product_price}}</p>
             <p class="card-text">Quantity: {{p.product.product_quantity}}</p>
-            <a href="#" class="btn btn-outline-primary">Order Now</a>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#" class="btn btn-outline-primary">Order Now</a>
+                </div>
+                <div class="col-md-6">
+                    <a href="/product-details/{{p.product.product_slug}}" class="btn btn-outline-info ml-3" >Details</a>
+                </div>
+            </div>
           </div>
         </div>
       </div>
