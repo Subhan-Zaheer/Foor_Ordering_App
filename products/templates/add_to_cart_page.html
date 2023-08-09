@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} Add to Cart  {% endblock %}
+
+{% block body %}
+
+<div class="container-md">
+    <form method="post">
+        {% csrf_token %}
+        <label for="">Enter the quantity</label>
+        <input type="number" name="product_quantity_input" id="">
+        <button type="submit" class="btn-success">Place Order</button>
+    </form>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -27,6 +27,8 @@ urlpatterns = [
     path('update-food/<name>', update_product, name='update_product'),
     path('order-food/', food_display, name='update_product'),
     path('product-details/<slug>', product_details, name='product_details'),
+    path('add-to-cart/<slug>', add_to_cart, name='product_details'),
+
 
 ]
 

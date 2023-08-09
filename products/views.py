@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
+from django.contrib import messages
 
 
 # Create your views here.
@@ -73,3 +74,20 @@ def product_details(request, slug):
         'images' : images,
     }
     return render(request, 'product_details.html', data)
+
+def add_to_cart(request, slug):
+    product = Product.objects.get(product_slug = slug)
+    print(product)
+    if request.method == 'POST':
+
+        quantity_input = int(request.POST.get('product_quantity_input'))
+        print(quantity_input)
+        print(product.product_quantity)
+        print(type(quantity_input))
+        if  quantity_input <= product.product_quantity:
+            product.product_quantity -= quantity_input
+            product.save()
+        else:
+            messages.warning(request, "Your quantity is more than stock.")
+
+    return render(request, 'add_to_cart_page.html')
