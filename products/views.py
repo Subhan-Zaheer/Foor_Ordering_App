@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
+from django.core import serializers
 
 
 # Create your views here.
@@ -47,6 +48,10 @@ def update_product(request, name):
             Product_Image.objects.create(product=product, product_image=image)
 
         product.save()
+        product_list = [product]
+        print(product_list)
+        serialized_data = serializers.serialize('json', product_list)
+        print(serialized_data)
         return redirect('/order-food')
 
 
